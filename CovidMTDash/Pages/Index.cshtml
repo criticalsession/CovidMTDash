@@ -12,8 +12,13 @@
         <p class="small">Last Updated: <strong>@Model.data.Date.ToShortDateString()</strong></p>
         <div class="container">
             <div class="row">
-                <div class="col-md-4">New Cases: @Model.data.NewCases</div>
-                <div class="col-md-4">Active Cases: @Model.data.ActiveCases</div>
+                <div class="col-md-6 col-lg-6 panel"><div class="internal"><div class="value">@Model.data.NewCases.ToString("N0")</div><div class="label">New Cases (24h)</div></div></div>
+                <div class="col-md-6 col-lg-6 panel"><div class="internal"><div class="value">@Model.data.ActiveCases.ToString("N0")</div><div class="label">Active Cases</div></div></div>
+                <div class="col-md-12 col-lg-12 panel"><div class="internal"><div class="value">@Model.data.TotalCases.ToString("N0")</div><div class="label">Total Cases</div></div></div>
+                <div class="col-md-6 col-lg-6 panel"><div class="internal"><div class="value">@Model.data.NewRecovered.ToString("N0")</div><div class="label">Recovered (24h)</div></div></div>
+                <div class="col-md-6 col-lg-6 panel"><div class="internal"><div class="value">@Model.data.TotalRecovered.ToString("N0")</div><div class="label">Total Recovered</div></div></div>
+                <div class="col-md-6 col-lg-6 panel"><div class="internal"><div class="value">@Model.data.NewDeaths.ToString("N0")</div><div class="label">Deaths (24h)</div></div></div>
+                <div class="col-md-6 col-lg-6 panel"><div class="internal"><div class="value">@Model.data.TotalDeaths.ToString("N0")</div><div class="label">Total Deaths</div></div></div>
             </div>
         </div>
     } else {

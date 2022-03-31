@@ -17,8 +17,8 @@ namespace CovidMTDash.Pages
 
         public void OnGet()
         {
-            //data = DataFetcher.Get(env.WebRootPath);
-            data = null;
+            data = DataFetcher.Get(env.WebRootPath);
+            //data = null;
         }
     }
 }
