@@ -38,14 +38,14 @@ namespace Manager
         {
             using (var client = new HttpClient())
             {
-                var response = client.GetAsync("https://localhost:7149/sample-data.csv").Result;
+                var response = client.GetAsync("https://raw.githubusercontent.com/COVID19-Malta/COVID19-Data/master/COVID-19%20Malta%20-%20Aggregate%20Data%20Set.csv").Result;
 
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = response.Content;
                     var rawData = responseContent.ReadAsStringAsync().Result;
 
-                    string[] rows = rawData.Split(Environment.NewLine);
+                    string[] rows = rawData.Split('\n');
                     int index = rows.Length - 1;
 
                     if (String.IsNullOrEmpty(rows.Last())) index--;

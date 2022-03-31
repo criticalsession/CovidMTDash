@@ -6,20 +6,19 @@ namespace CovidMTDash.Pages
 {
     public class IndexModel : PageModel
     {
-        public string data { get; set; }
+        public ProcessedCovidData? data { get; set; }
         private IWebHostEnvironment env;
 
         public IndexModel(IWebHostEnvironment _env)
         {
             env = _env;
-            data = "";
+            data = new ProcessedCovidData();
         }
 
         public void OnGet()
         {
-            var result = DataFetcher.Get(env.WebRootPath);
-            if (result != null) data = result.TotalCases.ToString();
-            else data = "No data";
+            //data = DataFetcher.Get(env.WebRootPath);
+            data = null;
         }
     }
 }

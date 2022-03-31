@@ -1,9 +1,22 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "CovidMTDash";
 }
 
 <div class="text-center">
-    @Model.data
+    <h1><strong>COVID-19</strong> 🇲🇹 Dashboard</h1>
+    <p>This is an unofficial dashboard as the government and health ministry has discontinued the official one. <strong>Data is <a href="https://github.com/COVID19-Malta/COVID19-Data" target="_blank">retrieved from official sources</a>.</strong></p>
+    @if (Model.data != null)
+    {
+        <p class="small">Last Updated: <strong>@Model.data.Date.ToShortDateString()</strong></p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">New Cases: @Model.data.NewCases</div>
+                <div class="col-md-4">Active Cases: @Model.data.ActiveCases</div>
+            </div>
+        </div>
+    } else {
+        <p class="red">An error occured while fetching data. Please try again later.</p>
+    }
 </div>
