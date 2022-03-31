@@ -1,20 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Manager;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CovidMTDash.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        public string data { get; set; }
+        private IWebHostEnvironment env;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(IWebHostEnvironment _env)
         {
-            _logger = logger;
+            env = _env;
+            data = "";
         }
 
         public void OnGet()
         {
-
+            var result = DataFetcher.Get(env.WebRootPath);
+            if (result != null) data = result.TotalCases.ToString();
+            else data = "No data";
         }
     }
 }
